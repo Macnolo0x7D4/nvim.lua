@@ -1,2 +1,3 @@
-require("macnolo.plugins")
 require("macnolo.set")
+require("macnolo.keymaps")
+require("macnolo.plugins")
