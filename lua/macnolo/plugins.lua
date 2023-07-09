@@ -10,5 +10,6 @@ return require('packer').startup(function(use)
 
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 
+  use 'nvim-tree/nvim-tree.lua'
   use 'nvim-tree/nvim-web-devicons'
 end)
