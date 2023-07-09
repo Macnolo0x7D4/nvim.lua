@@ -56,6 +56,8 @@ return require('packer').startup(function(use)
 
   use 'preservim/nerdcommenter'
 
+  use 'vim-test/vim-test'
+
   use 'alexghergh/nvim-tmux-navigation'
 
   use 'morhetz/gruvbox'
