@@ -49,6 +49,8 @@ return require('packer').startup(function(use)
 
   use 'windwp/nvim-autopairs' 
 
+  use 'preservim/nerdcommenter'
+
   use 'alexghergh/nvim-tmux-navigation'
 
   use 'morhetz/gruvbox'
