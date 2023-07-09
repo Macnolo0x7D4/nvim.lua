@@ -37,6 +37,8 @@ return require('packer').startup(function(use)
       {'L3MON4D3/LuaSnip'},
     }
   }
+  
+  use 'onsails/lspkind.nvim'
 
   use {
     'nvim-lualine/lualine.nvim',
