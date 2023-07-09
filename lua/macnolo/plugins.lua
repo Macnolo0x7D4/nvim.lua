@@ -18,5 +18,7 @@ return require('packer').startup(function(use)
     run = ':TSUpdate'
   }
 
+  use 'tpope/vim-fugitive'
+
   use 'morhetz/gruvbox'
 end)
