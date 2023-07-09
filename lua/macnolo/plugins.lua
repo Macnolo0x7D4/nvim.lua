@@ -38,5 +38,7 @@ return require('packer').startup(function(use)
     }
   }
 
+  use 'tpope/vim-surround'
+
   use 'morhetz/gruvbox'
 end)
