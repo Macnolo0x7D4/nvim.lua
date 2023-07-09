@@ -37,7 +37,7 @@ return require('packer').startup(function(use)
       {'L3MON4D3/LuaSnip'},
     }
   }
-  
+
   use 'onsails/lspkind.nvim'
 
   use {
@@ -45,9 +45,14 @@ return require('packer').startup(function(use)
     requires = { 'nvim-tree/nvim-web-devicons', opt = true }
   }
 
+  use {
+    'phaazon/hop.nvim',
+    branch = 'v2'
+  }
+
   use 'tpope/vim-surround'
 
-  use 'windwp/nvim-autopairs' 
+  use 'windwp/nvim-autopairs'
 
   use 'preservim/nerdcommenter'
 
