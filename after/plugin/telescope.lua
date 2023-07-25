@@ -5,6 +5,12 @@ require('telescope').setup {
       override_generic_sorter = true,
       override_file_sorter = true,
       case_mode = "smart_case",
+    },
+    project = {
+      base_dirs = {
+        '~/Documents/Personal',
+        '~/Documents/Work'
+      }
     }
   }
 }
@@ -17,3 +23,5 @@ vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
 vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
+
+vim.keymap.set('n', '<leader>fp', require('telescope').extensions.project.project, {})
