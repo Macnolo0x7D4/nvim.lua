@@ -1,6 +1,10 @@
 vim.cmd [[packadd packer.nvim]]
 
-return require('packer').startup(function(use)
+local packer = require('packer')
+
+packer.init({ max_jobs = 1 })
+
+packer.startup(function(use)
   use 'wbthomason/packer.nvim'
 
   use {
@@ -60,6 +64,8 @@ return require('packer').startup(function(use)
   use 'vim-test/vim-test'
 
   use 'alexghergh/nvim-tmux-navigation'
+
+  use 'github/copilot.vim'
 
   use 'morhetz/gruvbox'
   use({ 'rose-pine/neovim', as = 'rose-pine' })
