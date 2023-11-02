@@ -17,6 +17,9 @@ local cmp_mappings = lsp.defaults.cmp_mappings({
   ["<C-Space>"] = cmp.mapping.complete(),
 })
 
+cmp_mappings['<Tab>'] = nil
+cmp_mappings['<S-Tab>'] = nil
+
 local lspkind = require('lspkind')
 
 lsp.setup_nvim_cmp({
