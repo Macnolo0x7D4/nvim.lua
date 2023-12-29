@@ -8,8 +8,7 @@ require('telescope').setup {
     },
     project = {
       base_dirs = {
-        '~/Documents/Personal',
-        '~/Documents/Work'
+        { path = '~/Documents/Code', max_depth = 2 },
       }
     }
   }
