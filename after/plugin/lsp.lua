@@ -3,7 +3,26 @@ local lsp = require("lsp-zero")
 lsp.preset("recommended")
 
 lsp.ensure_installed({
-  "tsserver",
+  "astro",
+  "bashls",
+  "clangd",
+  "cssls",
+  "dockerls",
+  "elixirls",
+  "emmet_language_server",
+  "eslint",
+  "gopls",
+  "hls",
+  "html",
+  "jdtls",
+  "jsonls",
+  "kotlin_language_server",
+  "lua_ls",
+  "ruby_ls",
+  "rust_analyzer",
+  "svelte",
+  "tailwindcss",
+  "tsserver"
 })
 
 lsp.nvim_workspace()
