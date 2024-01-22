@@ -67,6 +67,8 @@ packer.startup(function(use)
 
   use 'github/copilot.vim'
 
+  use 'mhinz/vim-startify'
+
   use 'morhetz/gruvbox'
   use({ 'rose-pine/neovim', as = 'rose-pine' })
 end)
