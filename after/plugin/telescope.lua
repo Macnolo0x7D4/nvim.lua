@@ -22,6 +22,7 @@ telescope.setup {
 }
 
 telescope.load_extension('fzf')
+telescope.load_extension('harpoon')
 
 local builtin = require('telescope.builtin')
 
@@ -31,3 +32,5 @@ vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 
 vim.keymap.set('n', '<leader>fp', telescope.extensions.project.project, {})
+
+vim.keymap.set('n', '<leader>f ', telescope.extensions.harpoon.marks, {})
