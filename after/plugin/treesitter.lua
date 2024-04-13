@@ -1,4 +1,11 @@
-require("nvim-treesitter.configs").setup({
+local setup, treesitter = pcall(require, "nvim-treesitter.configs")
+
+if not setup then
+  print("Treesitter not setup")
+  return
+end
+
+treesitter.setup({
   ensure_installed = {
     "c",
     "cpp",
@@ -11,7 +18,7 @@ require("nvim-treesitter.configs").setup({
     "html",
     "css",
     "javascript",
-    "typescript", 
+    "typescript",
     "svelte"
   },
   sync_install = false,

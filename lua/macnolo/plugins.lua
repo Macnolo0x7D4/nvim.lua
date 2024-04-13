@@ -1,6 +1,11 @@
 vim.cmd [[packadd packer.nvim]]
 
-local packer = require('packer')
+local setup, packer = pcall(require, 'packer')
+
+if not setup then
+  print("Packer not setup")
+  return
+end
 
 packer.init({ max_jobs = 5 })
 
@@ -69,6 +74,10 @@ packer.startup(function(use)
 
   use 'mhinz/vim-startify'
 
-  use 'morhetz/gruvbox'
+  use 'ThePrimeagen/harpoon'
+
   use({ 'rose-pine/neovim', as = 'rose-pine' })
+
+  --use { 'catppuccin/nvim', as = 'catppuccin' }
+  -- use 'morhetz/gruvbox'
 end)

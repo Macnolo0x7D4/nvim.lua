@@ -1,33 +1,36 @@
-local lsp = require("lsp-zero")
+local setup_lsp, lsp = pcall(require, "lsp-zero")
+
+if not setup_lsp then
+  print("LSP not setup")
+  return
+end
 
 lsp.preset("recommended")
 
 lsp.ensure_installed({
-  "astro",
-  "bashls",
   "clangd",
   "cssls",
-  "dockerls",
   "elixirls",
   "emmet_language_server",
   "eslint",
   "gopls",
-  "hls",
-  "html",
   "jdtls",
   "jsonls",
   "kotlin_language_server",
   "lua_ls",
-  "ruby_ls",
-  "rust_analyzer",
-  "svelte",
   "tailwindcss",
   "tsserver"
 })
 
 lsp.nvim_workspace()
 
-local cmp = require("cmp")
+local setup_cmp, cmp = pcall(require, "cmp")
+
+if not setup_cmp then
+  print("CMP not setup")
+  return
+end
+
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
 local cmp_mappings = lsp.defaults.cmp_mappings({
   ["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
@@ -39,7 +42,12 @@ local cmp_mappings = lsp.defaults.cmp_mappings({
 cmp_mappings['<Tab>'] = nil
 cmp_mappings['<S-Tab>'] = nil
 
-local lspkind = require('lspkind')
+local setup_lspkind, lspkind = pcall(require, "lspkind")
+
+if not setup_lspkind then
+  print("lspkind not setup")
+  return
+end
 
 lsp.setup_nvim_cmp({
   mapping = cmp_mappings,
