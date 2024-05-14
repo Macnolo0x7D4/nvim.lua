@@ -16,7 +16,3 @@ vim.opt.termguicolors = true
 vim.opt.scrolloff = 8
 
 vim.opt.clipboard:append("unnamedplus")
-
---vim.cmd.colorscheme("gruvbox")
-vim.cmd.colorscheme("rose-pine")
---vim.cmd.colorscheme("catppuccin")
