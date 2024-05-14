@@ -30,6 +30,8 @@ packer.startup(function(use)
 
   use 'tpope/vim-fugitive'
 
+  use 'tpope/vim-dadbod'
+
   use {
     'VonHeikemen/lsp-zero.nvim',
     branch = 'v2.x',
