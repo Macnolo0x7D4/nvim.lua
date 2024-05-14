@@ -88,6 +88,8 @@ packer.startup(function(use)
 
   use 'ThePrimeagen/harpoon'
 
+  use 'f-person/git-blame.nvim'
+
   use 'lervag/vimtex'
 
   use { 'brendalf/mix.nvim', requires = { "nvim-lua/plenary.nvim" } }
