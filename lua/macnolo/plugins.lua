@@ -76,6 +76,8 @@ packer.startup(function(use)
 
   use 'ThePrimeagen/harpoon'
 
+  use 'lervag/vimtex'
+
   use({ 'rose-pine/neovim', as = 'rose-pine' })
 
   --use { 'catppuccin/nvim', as = 'catppuccin' }
