@@ -80,7 +80,9 @@ packer.startup(function(use)
 
   use 'lervag/vimtex'
 
-  use({ 'rose-pine/neovim', as = 'rose-pine' })
+  use { 'brendalf/mix.nvim', requires = { "nvim-lua/plenary.nvim" } }
+
+  use { 'rose-pine/neovim', as = 'rose-pine' }
 
   --use { 'catppuccin/nvim', as = 'catppuccin' }
   -- use 'morhetz/gruvbox'

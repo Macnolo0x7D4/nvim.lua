@@ -78,3 +78,12 @@ lsp.on_attach(function(client, bufnr)
 end)
 
 lsp.setup()
+
+local setup_mix, mix = pcall(require, "mix")
+
+if not setup_mix then
+  print("Mix not setup")
+  return
+end
+
+mix.setup()
