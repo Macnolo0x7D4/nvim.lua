@@ -11,6 +11,7 @@ return {
     "L3MON4D3/LuaSnip",
     "saadparwaiz1/cmp_luasnip",
     "j-hui/fidget.nvim",
+    "windwp/nvim-autopairs"
   },
 
   config = function()
@@ -88,5 +89,9 @@ return {
         prefix = "",
       },
     })
+
+    local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+
+    cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
   end
 }
