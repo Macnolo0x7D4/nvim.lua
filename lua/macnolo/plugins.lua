@@ -74,7 +74,17 @@ packer.startup(function(use)
 
   use 'github/copilot.vim'
 
-  use 'mhinz/vim-startify'
+  --use 'mhinz/vim-startify'
+  use {
+    'nvimdev/dashboard-nvim',
+    event = 'VimEnter',
+    config = function()
+      require('dashboard').setup {
+        -- config
+      }
+    end,
+    requires = { 'nvim-tree/nvim-web-devicons' }
+  }
 
   use 'ThePrimeagen/harpoon'
 
