@@ -3,4 +3,4 @@ vim.g.loaded_netrwPlugin = 1
 
 require("macnolo.options")
 require("macnolo.keymaps")
-require("macnolo.lazy_init")
+require("macnolo.lazy")

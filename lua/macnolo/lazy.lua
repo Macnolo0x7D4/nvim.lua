@@ -14,6 +14,6 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-    spec = "macnolo.lazy",
+    spec = "macnolo.plugins",
     change_detection = { notify = false }
 })
