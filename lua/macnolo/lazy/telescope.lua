@@ -6,7 +6,7 @@ return {
     'nvim-telescope/telescope-project.nvim',
     {
       'nvim-telescope/telescope-fzf-native.nvim',
-      run = 'make'
+      build = 'make'
     }
   },
   config = function()
