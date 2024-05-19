@@ -1,4 +1,5 @@
 return {
+  {
   "phaazon/hop.nvim",
   branch = 'v2',
   config = function()
@@ -14,4 +15,11 @@ return {
       hop.hint_char2({ current_line_only = false })
     end)
   end
+  },
+  {
+    "tpope/vim-surround"
+  },
+  {
+    "preservim/nerdcommenter"
+  }
 }
