@@ -13,6 +13,17 @@ return {
     },
     config = function ()
       require("mix").setup()
-    end
-  }
+    end,
+  },
+  {
+    "nvim-neotest/neotest",
+    dependencies = {
+      "jfpedroza/neotest-elixir",
+    },
+    opts = {
+      adapters = {
+        ["neotest-elixir"] = {},
+      },
+    },
+  },
 }
