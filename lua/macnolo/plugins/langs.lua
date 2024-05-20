@@ -7,8 +7,12 @@ return {
   },
   {
     "brendalf/mix.nvim",
+    cmd = "Mix",
     dependencies = {
       "nvim-lua/plenary.nvim"
-    }
+    },
+    config = function ()
+      require("mix").setup()
+    end
   }
 }
