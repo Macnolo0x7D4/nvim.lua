@@ -12,4 +12,17 @@ return {
       },
     },
   },
+  {
+    "nvim-cmp",
+    dependencies = {
+      {
+        "zbirenbaum/copilot-cmp",
+        dependencies = "copilot.lua",
+        opts = {},
+        config = function(_, opts)
+          require("copilot_cmp").setup(opts)
+        end,
+      },
+    }
+  }
 }
