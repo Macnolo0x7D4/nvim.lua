@@ -15,6 +15,8 @@ return {
   },
 
   config = function()
+    vim.keymap.set("n", "<leader>F", vim.lsp.buf.format)
+
     local cmp = require('cmp')
     local cmp_lsp = require("cmp_nvim_lsp")
     local capabilities = vim.tbl_deep_extend(
