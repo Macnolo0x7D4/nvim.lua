@@ -3,25 +3,15 @@ local function colorize(color)
 
   vim.cmd.colorscheme(color)
 
-  vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-  vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+  --vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+  --vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 end
 
 return {
   {
     "folke/tokyonight.nvim",
     config = function()
-      require("tokyonight").setup({
-        style = "storm",
-        transparent = true,
-        terminal_colors = true,
-        styles = {
-          comments = { italic = false },
-          keywords = { italic = false },
-          sidebars = "dark",
-          floats = "dark",
-        },
-      })
+      require("tokyonight").setup({style = "moon"})
     end
   },
   {
@@ -36,27 +26,24 @@ return {
       colorize("catppuccin")
     end
   },
-  --{
-  --"rose-pine/neovim",
-  --name = "rose-pine",
-  --config = function()
-  --require('rose-pine').setup({
-  --disable_background = true,
-  --styles = {
-  --italic = false,
-  --},
-  --})
-
-  --colorize("rose-pine")
-  --end
-  --},
-  --{
-  --"shaunsingh/moonlight.nvim",
-  --name = "moonlight",
-  --config = function()
-  --colorize("moonlight")
-  --end
-  --}
+  {
+    "rose-pine/neovim",
+    name = "rose-pine",
+    config = function()
+      require('rose-pine').setup()
+    end
+  },
+  {
+    "marko-cerovac/material.nvim",
+    name = "material",
+    config = function ()
+      vim.g.material_style = "palenight"
+    end
+  },
+  {
+    "Mofiqul/dracula.nvim",
+    name = "dracula"
+  },
   {
     "hoob3rt/lualine.nvim",
     dependencies = {
@@ -66,9 +53,6 @@ return {
       require('lualine').setup {
         options = {
           icons_enabled = true,
-          --theme = 'gruvbox',
-          --theme = 'palenight',
-          --theme = 'moonlight',
           theme = 'catppuccin',
           component_separators = { left = '', right = '' },
           section_separators = { left = '', right = '' },
