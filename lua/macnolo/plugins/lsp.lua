@@ -32,7 +32,7 @@ return {
         "lua_ls",
         "elixirls",
         "gopls",
-        "tsserver",
+        "ts_ls",
         "jdtls"
       },
       handlers = {
