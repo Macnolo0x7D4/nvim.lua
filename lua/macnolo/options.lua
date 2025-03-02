@@ -16,3 +16,8 @@ vim.opt.termguicolors = true
 vim.opt.scrolloff = 8
 
 vim.opt.clipboard:append("unnamedplus")
+
+if vim.g.neovide then
+  vim.o.guifont = "BerkeleyMono Nerd Font:h14"
+  vim.opt.linespace = 3
+end
