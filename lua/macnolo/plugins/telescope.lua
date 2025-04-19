@@ -21,7 +21,7 @@ return {
         },
         project = {
           base_dirs = {
-            { path = '~/Documents/Code', max_depth = 2 },
+            { path = '~/Code', max_depth = 2 },
           }
         }
       }
