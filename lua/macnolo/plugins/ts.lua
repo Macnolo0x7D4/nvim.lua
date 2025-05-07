@@ -17,7 +17,11 @@ return {
         "css",
         "javascript",
         "typescript",
-        "go"
+        "go",
+        "rust",
+        "markdown",
+        "markdown_inline",
+        "yaml"
       },
       sync_install = false,
       indent = {
