@@ -13,7 +13,6 @@ return {
     "j-hui/fidget.nvim",
     "windwp/nvim-autopairs",
   },
-
   config = function()
     vim.keymap.set("n", "<leader>F", vim.lsp.buf.format)
 
@@ -27,30 +26,7 @@ return {
 
     require("fidget").setup({})
     require("mason").setup()
-    require("mason-lspconfig").setup({
-      handlers = {
-        function(server_name)
-          require("lspconfig")[server_name].setup {
-            capabilities = capabilities
-          }
-        end,
-
-        ["lua_ls"] = function()
-          local lspconfig = require("lspconfig")
-          lspconfig.lua_ls.setup {
-            capabilities = capabilities,
-            settings = {
-              Lua = {
-                runtime = { version = "Lua 5.1" },
-                diagnostics = {
-                  globals = { "vim", "it", "describe", "before_each", "after_each" },
-                }
-              }
-            }
-          }
-        end,
-      }
-    })
+    require("mason-lspconfig").setup()
 
     local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
@@ -96,7 +72,7 @@ return {
         vim.api.nvim_create_autocmd("BufWritePre", {
           buffer = args.buf,
           callback = function()
-            vim.lsp.buf.format {async = false, id = args.data.client_id }
+            vim.lsp.buf.format { async = false, client_id = args.data.client_id, bufnr = args.buf }
           end,
         })
       end
