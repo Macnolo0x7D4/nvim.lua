@@ -11,6 +11,33 @@ return {
     if opts.adapters then
       local adapters = {}
 
+      opts.consumers = opts.consumers or {}
+      opts.consumers.trouble = function(client)
+        client.listeners.results = function(adapter_id, results, partial)
+          if partial then
+            return
+          end
+          local tree = assert(client:get_position(nil, { adapter = adapter_id }))
+
+          local failed = 0
+          for pos_id, result in pairs(results) do
+            if result.status == "failed" and tree:get_key(pos_id) then
+              failed = failed + 1
+            end
+          end
+          vim.schedule(function()
+            local trouble = require("trouble")
+            if trouble.is_open() then
+              trouble.refresh()
+              if failed == 0 then
+                trouble.close()
+              end
+            end
+          end)
+          return {}
+        end
+      end
+
       for name, config in pairs(opts.adapters or {}) do
         if type(name) == "number" then
           if type(config) == "string" then
