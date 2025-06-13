@@ -1,0 +1,17 @@
+return {
+  {
+    "williamboman/mason.nvim",
+    opts = {}
+  },
+  {
+    "williamboman/mason-lspconfig.nvim",
+    dependencies = {
+      "williamboman/mason.nvim"
+    },
+    opts = {}
+  },
+  {
+    "j-hui/fidget.nvim",
+    opts = {}
+  }
+}
