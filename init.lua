@@ -1,1 +1,2 @@
-require("macnolo")
+require("config")
+require("plugins")

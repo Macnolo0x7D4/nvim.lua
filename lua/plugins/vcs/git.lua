@@ -15,8 +15,5 @@ return {
         end)
       end
     }
-  },
-  {
-    "f-person/git-blame.nvim"
   }
 }
