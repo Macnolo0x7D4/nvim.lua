@@ -10,6 +10,7 @@ end
 return {
   {
     "folke/tokyonight.nvim",
+    lazy = true,
     config = function()
       require("tokyonight").setup({style = "moon"})
     end
@@ -29,6 +30,7 @@ return {
   {
     "rose-pine/neovim",
     name = "rose-pine",
+    lazy = true,
     config = function()
       require('rose-pine').setup()
     end
@@ -36,12 +38,14 @@ return {
   {
     "marko-cerovac/material.nvim",
     name = "material",
+    lazy = true,
     config = function ()
       vim.g.material_style = "palenight"
     end
   },
   {
     "Mofiqul/dracula.nvim",
-    name = "dracula"
+    name = "dracula",
+    lazy = true
   } 
 }
