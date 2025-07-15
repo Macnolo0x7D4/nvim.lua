@@ -14,6 +14,22 @@ return {
     quickfile = { enabled = true },
     scope = { enabled = true },
     statuscolumn = { enabled = true },
-    words = { enabled = true }
+    words = { enabled = true },
+    zen = {
+      enabled = true,
+      toggles = {
+        ufo             = true,
+        dim             = true,
+        git_signs       = false,
+        diagnostics     = false,
+        line_number     = false,
+        relative_number = false,
+        signcolumn      = "no",
+        indent          = false
+      }
+    },
   },
+  keys = {
+    { "<leader>z", function() Snacks.zen() end, desc = "Toggle Zen Mode", mode = "n" },
+  }
 }
