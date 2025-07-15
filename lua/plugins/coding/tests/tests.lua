@@ -7,70 +7,19 @@ return {
     "nvim-treesitter/nvim-treesitter",
     "jfpedroza/neotest-elixir"
   },
-  config = function(_, opts)
-    if opts.adapters then
-      local adapters = {}
-
-      opts.consumers = opts.consumers or {}
-      opts.consumers.trouble = function(client)
-        client.listeners.results = function(adapter_id, results, partial)
-          if partial then
-            return
-          end
-          local tree = assert(client:get_position(nil, { adapter = adapter_id }))
-
-          local failed = 0
-          for pos_id, result in pairs(results) do
-            if result.status == "failed" and tree:get_key(pos_id) then
-              failed = failed + 1
-            end
-          end
-          vim.schedule(function()
-            local trouble = require("trouble")
-            if trouble.is_open() then
-              trouble.refresh()
-              if failed == 0 then
-                trouble.close()
-              end
-            end
-          end)
-          return {}
-        end
-      end
-
-      for name, config in pairs(opts.adapters or {}) do
-        if type(name) == "number" then
-          if type(config) == "string" then
-            config = require(config)
-          end
-          adapters[#adapters + 1] = config
-        elseif config ~= false then
-          local adapter = require(name)
-          if type(config) == "table" and not vim.tbl_isempty(config) then
-            local meta = getmetatable(adapter)
-            if adapter.setup then
-              adapter.setup(config)
-            elseif meta and meta.__call then
-              adapter(config)
-            else
-              error("Adapter " .. name .. " does not support setup")
-            end
-          end
-          adapters[#adapters + 1] = adapter
-        end
-      end
-      opts.adapters = adapters
-    end
-
-    require("neotest").setup(opts)
-
-    vim.keymap.set("n", "<leader>t", function()
-      require("neotest").run.run()
-    end)
-
-    vim.keymap.set("n", "<leader>tf", function()
-      require("neotest").run.run(vim.fn.expand("%"))
-    end)
-    --vim.keymap.set("n", "<leader>T", vim.cmd.TestSuite)
+  keys = {
+    {"<leader>tt", function() require("neotest").run.run() end},
+    {"<leader>tf", function() require("neotest").run.run(vim.fn.expand("%")) end},
+    {"<leader>T", vim.cmd.TestSuite}
+  },
+  config = function()
+    require("neotest").setup({
+      adapters = {
+        require("neotest-elixir")({
+          mix_task = "test",
+          extra_block_identifiers = { "describe", "context", "feature", "scenario", "given", "when", "then" },
+        }),
+      },
+    })
   end
 }

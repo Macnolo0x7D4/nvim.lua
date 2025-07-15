@@ -8,20 +8,6 @@ return {
     opts = {},
   },
   {
-    "nvim-neotest/neotest",
-    dependencies = {
-      "jfpedroza/neotest-elixir",
-    },
-    opts = {
-      adapters = {
-        ["neotest-elixir"] = {
-          mix_task = "test",
-          extra_block_identifiers = { "describe", "context", "feature", "scenario", "given", "when", "then" },
-        },
-      },
-    },
-  },
-  {
     "neovim/nvim-lspconfig",
     ft = { "elixir", "eex", "heex", "surface" },
     dependencies = {
