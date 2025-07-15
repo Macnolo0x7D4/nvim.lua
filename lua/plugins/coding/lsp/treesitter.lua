@@ -14,6 +14,7 @@ return {
         "elixir",
         "erlang",
         "heex",
+        "eex",
         "html",
         "css",
         "javascript",
