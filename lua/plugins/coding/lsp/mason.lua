@@ -1,10 +1,15 @@
 return {
   {
     "williamboman/mason.nvim",
+    opts = {}
+  },
+  {
+    "mason-org/mason-lspconfig.nvim",
     opts = {},
     dependencies = {
-     "williamboman/mason-lspconfig.nvim" 
-    }
+      { "mason-org/mason.nvim", opts = {} },
+      "neovim/nvim-lspconfig",
+    },
   },
   {
     "j-hui/fidget.nvim",
