@@ -19,6 +19,8 @@ return {
         "css",
         "javascript",
         "typescript",
+        "gitcommit",
+        "gitignore",
         "go",
         "rust",
         "markdown",
