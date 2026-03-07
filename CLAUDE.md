@@ -37,7 +37,8 @@ lua/
 1. `init.lua` → requires `"config"`
 2. `config/init.lua` → loads options, keymaps, and lazy
 3. `config/lazy.lua` → bootstraps lazy.nvim and loads plugins from `"plugins"`
-4. `plugins/init.lua` → imports all plugin category modules
+4. `plugins/init.lua` → returns a table of imports for each category (ai, coding, editor, languages, ui, vcs)
+5. Lazy.nvim recursively loads all plugin files from imported categories
 
 **Plugin file pattern:**
 ```lua
@@ -57,6 +58,9 @@ return {
 - Command-based: `cmd = "Trouble"`, `cmd = "Mix"`
 - Filetype-based: `ft = "java"`, `ft = "elixir"`
 - Key-based: `keys = {...}` for immediate keybinding availability
+
+**Performance optimizations:**
+Several built-in Neovim plugins are disabled in `config/lazy.lua` for faster startup: `gzip`, `matchit`, `matchparen`, `netrwPlugin`, `tarPlugin`, `tohtml`, `tutor`, `zipPlugin`.
 
 ### LSP Configuration Pattern
 
@@ -78,6 +82,19 @@ vim.api.nvim_create_autocmd('LspAttach', {
 **Chain:** nvim-cmp → LuaSnip (snippets) + nvim_lsp + copilot + buffer sources
 
 **Integration:** Autopairs automatically closes brackets on completion confirm.
+
+### Formatting with Conform.nvim
+
+Located in `plugins/editor/conform.lua`. Formatting runs automatically on save with 500ms timeout.
+
+**Configured formatters by language:**
+- Lua: `stylua`
+- Python: `isort`, `black`
+- JavaScript: `prettierd` or `prettier` (uses first available)
+- Elixir: `mix`
+- Shell scripts: `shfmt` with 2-space indentation
+
+**Fallback:** If no formatter is configured, LSP formatting is used as fallback.
 
 ### Key Leader and Prefixes
 
@@ -109,6 +126,15 @@ vim.api.nvim_create_autocmd('LspAttach', {
 - `S` - Flash treesitter
 - `r` - Remote flash (operator pending)
 
+### Git Integration (VCS)
+
+**Gitsigns** (`plugins/vcs/gitsigns.lua`):
+- Inline git change indicators in sign column
+- Shows added, changed, deleted, and untracked lines
+- Staged changes also visualized with separate signs
+
+**Neogit**: Full-featured git client accessible via `<leader>gs`
+
 ### Language-Specific Configuration
 
 **Java (nvim-jdtls):**
@@ -131,10 +157,19 @@ LSP servers, formatters, and linters are managed through Mason. Auto-install con
 
 ### Adding New Plugins
 
-1. Create a new file in the appropriate `plugins/` subdirectory
-2. Return a lazy.nvim spec table
-3. Lazy.nvim will automatically load it on next restart
-4. No need to manually require it in `plugins/init.lua` if following the category import pattern
+1. Create a new file in the appropriate `plugins/` subdirectory (e.g., `plugins/editor/my-plugin.lua`)
+2. Return a lazy.nvim spec table from the file
+3. The plugin will be automatically discovered through the category import in `plugins/init.lua`
+4. Reload with `:Lazy sync` or restart Neovim
+
+**Example:** To add a new editor plugin, create `plugins/editor/my-plugin.lua`:
+```lua
+return {
+  "username/plugin-name",
+  event = "VeryLazy",
+  opts = {},
+}
+```
 
 ### Modifying Configuration
 
@@ -142,7 +177,10 @@ LSP servers, formatters, and linters are managed through Mason. Auto-install con
 - **Global keybindings:** Edit `lua/config/keymaps.lua`
 - **Plugin-specific settings:** Edit the plugin file in `lua/plugins/*/`
 - **LSP settings:** Modify `lua/plugins/coding/lsp.lua`
+- **Reload configuration:** Use `:Lazy sync` for plugins, or restart Neovim for core config changes
 
-### Note on README
+### Important Notes
 
-The README.md references outdated paths (`lua/macnolo/`) from a previous version. Current paths use `lua/config/` instead.
+- README.md shows the public-facing structure; all paths in the actual codebase use `lua/config/` and `lua/plugins/`
+- Format-on-save is enabled by default; disable in `plugins/editor/conform.lua` if needed
+- Mason will auto-install LSP servers on first buffer open for that language
