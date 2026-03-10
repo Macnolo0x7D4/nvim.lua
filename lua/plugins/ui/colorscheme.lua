@@ -1,16 +1,17 @@
-local function colorize(color)
-  color = color or "rose-pine"
-
-  vim.cmd.colorscheme(color)
-end
-
 return {
   {
-    "folke/tokyonight.nvim",
+    "rebelot/kanagawa.nvim",
     lazy = false,
     config = function()
+      require("kanagawa").load("wave")
+    end
+  },
+  {
+    "folke/tokyonight.nvim",
+    lazy = true,
+    config = function()
       require("tokyonight").setup({ style = "night" })
-      colorize("tokyonight")
+      vim.cmd.colorscheme()
     end
   },
   {
@@ -33,7 +34,7 @@ return {
     "marko-cerovac/material.nvim",
     name = "material",
     lazy = true,
-    config = function ()
+    config = function()
       vim.g.material_style = "palenight"
     end
   },
@@ -41,5 +42,5 @@ return {
     "Mofiqul/dracula.nvim",
     name = "dracula",
     lazy = true
-  } 
+  }
 }
